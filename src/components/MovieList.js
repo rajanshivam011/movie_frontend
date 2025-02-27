@@ -5,11 +5,11 @@ import Filter from "./Filter";
 
 const MovieList = ({ movies, addToWatchlist, removeFromWatchlist, isWatchlist = false ,isDarkMode,searchQuery}) => {
   const [movieList, setMovieList] = useState([]);
-  // const [lastMovie, setLastMovie] = useState(null);
+  const [lastMovie, setLastMovie] = useState(null);
   // const [selectedRating, setSelectedRating] = useState("0");
-  // const [filteredMovies, setFilteredMovies] = useState([]);
-  // const [selectedYear, setSelectedYear] = useState("");
-  // const [selectedRating, setSelectedRating] = useState("0");
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [selectedYear, setSelectedYear] = useState("");
+  const [selectedRating, setSelectedRating] = useState("0");
 
   const API_KEY = "9609ba4c";
   const BASE_URL = "https://www.omdbapi.com/";
@@ -100,7 +100,7 @@ const MovieList = ({ movies, addToWatchlist, removeFromWatchlist, isWatchlist = 
             return { ...movie, ...details.data };
           })
         );
-        setMovies(moviesWithDetails);
+        setLastMovie(moviesWithDetails);
         setFilteredMovies(moviesWithDetails); // Initialize filtered movies
       }
     } catch (error) {
