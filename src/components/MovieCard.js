@@ -9,7 +9,7 @@ const [loading, setLoading] = useState(false);
 
 const fetchTrailer = async (movieTitle) => {
   try {
-    const response = await axios.get(`http://localhost:5000/api/search`, {
+    const response = await axios.get(`https://movie-011-backened.onrender.com/api/search`, {
       params: { query: `${movieTitle} official trailer` },
     });
 
@@ -19,7 +19,7 @@ const fetchTrailer = async (movieTitle) => {
     if (response.data && response.data.id && response.data.id.videoId) {
       const videoId = response.data.id.videoId;
       const trailerUrl = `https://www.youtube.com/watch?v=${videoId}`;
-
+        // setTrailerUrl(trailerUrl);
       // ✅ Open YouTube trailer in new tab
       window.open(trailerUrl, "_blank");
     } else {
